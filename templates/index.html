@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agente REBA - Análisis Ergonómico</title>
+    <link rel="stylesheet" href="/static/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="hero">
+            <div>
+                <h1>Agente REBA</h1>
+                <p>Analiza imágenes ergonómicas usando el método Rapid Entire Body Assessment.</p>
+            </div>
+            <span class="badge">Análisis postural</span>
+        </div>
+
+        <div class="main-grid">
+            <div class="card upload-card">
+                <h2>Subir imagen</h2>
+                <p class="muted">Selecciona una imagen clara de la postura o estación de trabajo.</p>
+
+                <label for="imageInput" class="upload-box">
+                    <span id="uploadText">Haz clic para seleccionar una imagen</span>
+                    <small>PNG, JPG, JPEG o WEBP</small>
+                    <input type="file" id="imageInput" accept="image/*">
+                </label>
+
+                <div class="preview-container" id="previewContainer">
+                    <img id="previewImage" alt="Vista previa">
+                </div>
+
+                <div class="side-selector">
+                    <label>Seleccione el lado a evaluar según REBA</label>
+
+                    <div class="side-options">
+                        <label class="side-option">
+                            <input type="radio" name="bodySide" value="izquierdo" checked>
+                            <span>Lado izquierdo</span>
+                        </label>
+
+                        <label class="side-option">
+                            <input type="radio" name="bodySide" value="derecho">
+                            <span>Lado derecho</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button id="analyzeButton">Analizar imagen</button>
+
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <span>Analizando imagen, por favor espera...</span>
+                </div>
+
+                <div id="errorBox" class="error hidden"></div>
+            </div>
+
+            <div class="card info-card">
+                <h2>Método REBA</h2>
+                <p>
+                    El análisis evalúa tronco, cuello, piernas, brazos, antebrazos,
+                    muñecas, carga, agarre y actividad.
+                </p>
+
+                <div class="mini-list">
+                    <div>
+                        <strong>Grupo A</strong>
+                        <span>Tronco, cuello y piernas</span>
+                    </div>
+                    <div>
+                        <strong>Grupo B</strong>
+                        <span>Brazo, antebrazo y muñeca del lado seleccionado</span>
+                    </div>
+                    <div>
+                        <strong>Lateralidad</strong>
+                        <span>REBA evalúa un solo lado para extremidad superior</span>
+                    </div>
+                    <div>
+                        <strong>Resultado</strong>
+                        <span>Nivel de riesgo y acción requerida</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="result-card hidden" id="resultCard">
+            <div class="result-header">
+                <div>
+                    <h2>Reporte REBA</h2>
+                    <p class="muted">Resultado generado por el agente ergonómico.</p>
+                </div>
+                <button id="copyButton" class="secondary-button">Copiar reporte</button>
+            </div>
+
+            <div id="reportOutput" class="markdown-body"></div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
